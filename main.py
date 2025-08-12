@@ -34,7 +34,3 @@ def compare_texts(data: UserInput):
 
     return HTMLResponse(status_code=200, content = output_html)
 
-if __name__=='__main__':
-
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8080,reload=True)       # Basically to run on any API (0.0.0.0) and to run on port 8080 there

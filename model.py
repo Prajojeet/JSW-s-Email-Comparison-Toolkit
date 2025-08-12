@@ -8,7 +8,6 @@ def run_comparison_engine(email_text: str, original_text: str):
 
     # Treating the original text first
     alpha_added = preprocessing.alpha_end_all_lines(original_text)
-    print(alpha_added)
     original_clauses = preprocessing.extract_clauses_from_text(alpha_added)
 
     # Treating the HTML second

@@ -36,4 +36,5 @@ def compare_texts(data: UserInput):
 
 @app.get("/")
 async def read_index():
-    return FileResponse('static_frontend/index.html')      # Basically to run on any API (0.0.0.0) and to run on port 8080 there
+    return FileResponse('static_frontend/index.html')
+     # Basically to run on any API (0.0.0.0) and to run on port 8080 there

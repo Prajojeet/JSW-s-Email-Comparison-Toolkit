@@ -2,7 +2,7 @@ import model
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from pydantic import BaseModel, Field
 from typing import Literal, Annotated
 
@@ -34,7 +34,6 @@ def compare_texts(data: UserInput):
 
     return HTMLResponse(status_code=200, content = output_html)
 
-if __name__=='__main__':
-
-    import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8080,reload=True)       # Basically to run on any API (0.0.0.0) and to run on port 8080 there
+@app.get("/")
+async def read_index():
+    return FileResponse('static_frontend/index.html')      # Basically to run on any API (0.0.0.0) and to run on port 8080 there

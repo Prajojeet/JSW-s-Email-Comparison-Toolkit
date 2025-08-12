@@ -1,8 +1,9 @@
 import model
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
-from pydantic import BaseModel, Field, computed_field
+from pydantic import BaseModel, Field
 from typing import Literal, Annotated
 
 app = FastAPI()
@@ -18,6 +19,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# serve /static/* (images, css, js) and open index.html in browser
+app.mount("/static", StaticFiles(directory="static_frontend"), name="static")
+
 class UserInput(BaseModel):
 
     email_text: Annotated[str, Field(..., description="The text from the email")]
@@ -32,4 +37,4 @@ def compare_texts(data: UserInput):
 if __name__=='__main__':
 
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8080,reload=True)       # Basically to run on any API and through any port
+    uvicorn.run("main:app", host="0.0.0.0", port=8080,reload=True)       # Basically to run on any API (0.0.0.0) and to run on port 8080 there

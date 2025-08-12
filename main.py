@@ -33,8 +33,3 @@ def compare_texts(data: UserInput):
     output_html = model.run_comparison_engine(data.email_text, data.original_text)
 
     return HTMLResponse(status_code=200, content = output_html)
-
-@app.get("/")
-async def read_index():
-    return FileResponse('static_frontend/index.html')
-     # Basically to run on any API (0.0.0.0) and to run on port 8080 there

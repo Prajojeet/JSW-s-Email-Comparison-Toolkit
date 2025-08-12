@@ -14,7 +14,7 @@ app = FastAPI()
 # serve /static/* (images, css, js) and open index.html in browser
 app.mount("/static", StaticFiles(directory="static_frontend"), name="static")
 
-@app.get("/app", response_class=HTMLResponse)
+@app.get("/", response_class=HTMLResponse)
 def root():
     return FileResponse("static_frontend/index.html")
 
